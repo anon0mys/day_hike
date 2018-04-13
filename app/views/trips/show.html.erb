@@ -2,6 +2,8 @@
 <%= @trip.start_date %>
 <%= @trip.end_date %>
 
+<%= "Planned Distance: #{@trip.planned_distance}" %>
+
 <% @trails.each do |trail| %>
   <%= trail.name %>
   <%= trail.address %>

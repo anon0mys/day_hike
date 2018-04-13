@@ -11,5 +11,20 @@ describe 'Visits a trip show' do
       expect(page).to have_content(trip.start_date)
       expect(page).to have_content(trip.end_date)
     end
+
+    scenario 'they see all the trails associated with that trip' do
+      trip = Trip.create(name: 'Trip 1', start_date: '04/11/2018', end_date: '04/11/2018')
+      trail_one = trip.trails.create(name: 'Trail 1', length: 6, address: '123 Nowhere Road')
+      trail_two = trip.trails.create(name: 'Trail 2', length: 7, address: '1234 Nowhere Road')
+      trail_three = trip.trails.create(name: 'Trail 3', length: 8, address: '12345 Nowhere Road')
+
+      visit trip_path(trip)
+
+      expect(page).to have_content(trail_one.name)
+      expect(page).to have_content(trail_one.address)
+      expect(page).to have_content(trail_one.length)
+      expect(page).to have_content(trail_two.name)
+      expect(page).to have_content(trail_three.name)
+    end
   end
 end

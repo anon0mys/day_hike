@@ -1,3 +1,14 @@
 <%= @trip.name %>
 <%= @trip.start_date %>
 <%= @trip.end_date %>
+
+<%= "Planned Distance: #{@trip.planned_distance}" %>
+<%= "Average Distance: #{@trip.average_distance}" %>
+<%= "Longest Distance: #{@trip.longest_distance}" %>
+<%= "Shortest Distance: #{@trip.shortest_distance}" %>
+
+<% @trails.each do |trail| %>
+  <%= trail.name %>
+  <%= trail.address %>
+  <%= trail.length %>
+<% end %>
